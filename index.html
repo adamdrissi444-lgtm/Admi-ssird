@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admi Ssird AI</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101326;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 22px;
+  text-align: center;
+  background: #191d38;
+  border-bottom: 1px solid #34395a;
+}
+h1 { color: #a99aff; margin: 5px; }
+main {
+  width: 90%;
+  max-width: 650px;
+  margin: 30px auto;
+  flex: 1;
+}
+#chat {
+  min-height: 250px;
+  padding: 16px;
+  background: #191d38;
+  border-radius: 16px;
+  overflow-wrap: anywhere;
+}
+.msg {
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+  background: #292e50;
+  white-space: pre-wrap;
+}
+input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid #555b80;
+  background: #191d38;
+  color: white;
+  font-size: 16px;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 10px;
+  background: #8b78ff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+small { color: #b8bdd6; }
+</style>
+</head>
+<body>
+<header>
+  <h1>✨ Admi Ssird AI</h1>
+  <small>Dein persönlicher KI-Assistent</small>
+</header>
+<main>
+  <h2>Hallo! 👋</h2>
+  <p>Ich bin Admi Ssird. Was möchtest du wissen?</p>
+  <div id="chat">
+    <div class="msg">Admi Ssird: Willkommen! Schreib mir eine Nachricht.</div>
+  </div>
+  <input id="frage" placeholder="Frag Admi Ssird etwas...">
+  <button onclick="senden()">Nachricht senden</button>
+  <p><small>Dies ist zunächst eine Demo ohne echte KI-Verbindung.</small></p>
+</main>
+<script>
+function senden() {
+  const feld = document.getElementById('frage');
+  const chat = document.getElementById('chat');
+  const text = feld.value.trim();
+  if (!text) return;
+
+  const frage = document.createElement('div');
+  frage.className = 'msg';
+  frage.textContent = 'Du: ' + text;
+  chat.appendChild(frage);
+
+  const antwort = document.createElement('div');
+  antwort.className = 'msg';
+  antwort.textContent =
+    'Admi Ssird: Danke für deine Frage! Ich bin noch in der Demo-Version. Für intelligente Antworten muss ich mit einem KI-Modell verbunden werden.';
+  chat.appendChild(antwort);
+
+  feld.value = '';
+}
+document.getElementById('frage').addEventListener('keydown', e => {
+  if (e.key === 'Enter') senden();
+});
+</script>
+</body>
+</html>
